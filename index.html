@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sungjin Bae, Ph.D. — Rehabilitation Robotics & Neurorehabilitation</title>
+<meta name="description" content="Sungjin Bae is a postdoctoral researcher at Northwestern University & Shirley Ryan AbilityLab working on spasticity assessment, rehabilitation robotics, and neurorehabilitation.">
+<meta property="og:title" content="Sungjin Bae, Ph.D.">
+<meta property="og:description" content="Rehabilitation robotics & neurorehabilitation researcher">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sonjin1128.github.io">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF9F7; --surface:#FFFFFF; --ink:#1F2328; --ink-soft:#5A6169;
+  --accent:#2C6E63; --accent-strong:#1F5249; --accent-tint:#EAF1EF; --line:#E7E4DE;
+  --font-display:"Source Serif 4",Georgia,serif;
+  --font-body:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-strong)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+nav{position:fixed;top:0;left:0;right:0;height:64px;z-index:100;display:flex;align-items:center;
+  background:transparent;transition:background .25s ease-out,border-color .25s ease-out;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom-color:var(--line)}
+nav .wrap{width:100%;display:flex;justify-content:space-between;align-items:center}
+.nav-name{font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--ink)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{font-size:14px;color:var(--ink-soft);padding-bottom:4px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:96px 24px 64px}
+.hero-avatar{width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 26px;border:1px solid var(--line);box-shadow:0 1px 2px rgb(0 0 0 / 5%)}
+.hero-name{font-family:var(--font-display);font-weight:600;font-size:clamp(44px,7vw,76px);line-height:1.1;letter-spacing:-0.01em}
+.hero-tag{font-size:clamp(17px,2.2vw,21px);margin-top:20px}
+.hero-sub{font-size:15px;color:var(--ink-soft);margin-top:8px}
+.hero-links{display:flex;gap:14px;margin-top:28px}
+.hero-links a{display:flex;align-items:center;gap:7px;font-size:14px;padding:8px 16px;border-radius:999px;background:var(--accent-tint);color:var(--accent);transition:background .15s,color .15s}
+.hero-links a:hover{background:var(--accent);color:#fff}
+.hero-links svg{width:16px;height:16px;fill:currentColor}
+.scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:var(--ink-soft);font-size:13px;animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+section{padding:112px 0}
+section+section{border-top:1px solid var(--line)}
+.label{font-family:var(--font-mono);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h2{font-family:var(--font-display);font-weight:600;font-size:32px;margin-bottom:48px}
+h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.prose{max-width:720px}
+.prose p+p{margin-top:1.2em}
+.muted{color:var(--ink-soft)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.chip{font-size:13.5px;padding:6px 14px;border-radius:999px;background:var(--accent-tint);color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgb(0 0 0 / 4%);display:flex;flex-direction:column}
+.card-media{aspect-ratio:16/10;background:var(--accent-tint);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:13px;border-bottom:1px solid var(--line)}
+.card-media img,.card-media video{width:100%;height:100%;object-fit:cover}
+.card-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-period{font-family:var(--font-mono);font-weight:500;font-size:12.5px;letter-spacing:.05em;color:var(--accent)}
+.card-body p{font-size:15px;color:var(--ink-soft);line-height:1.65}
+
+.pub-filters{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.pub-filters button{font-family:var(--font-body);font-size:13.5px;padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);cursor:pointer;transition:all .15s}
+.pub-filters button:hover{border-color:var(--accent);color:var(--accent)}
+.pub-filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.pub{padding:20px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:64px 1fr;gap:18px;transition:background .15s}
+.pub:hover{background:rgb(234 241 239 / 35%)}
+.pub-year{font-family:var(--font-mono);font-weight:500;font-size:13px;color:var(--accent);padding-top:3px}
+.pub-title{font-weight:600;font-size:16.5px;line-height:1.5}
+.pub-meta{font-size:14.5px;color:var(--ink-soft);margin-top:3px}
+.pub-meta em{font-style:italic}
+.pub-links{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.pub-links a{font-size:12.5px;padding:3px 12px;border-radius:999px;background:var(--accent-tint);color:var(--accent)}
+.pub-links a:hover{background:var(--accent);color:#fff}
+
+.cv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px}
+.cv-item{padding:14px 0;border-bottom:1px solid var(--line)}
+.cv-item:first-of-type{border-top:1px solid var(--line)}
+.cv-when{font-family:var(--font-mono);font-weight:500;font-size:12.5px;color:var(--accent)}
+.cv-what{font-size:15.5px;font-weight:500;margin-top:2px}
+.cv-where{font-size:14px;color:var(--ink-soft)}
+
+.contact-mail{font-family:var(--font-display);font-size:clamp(22px,3.5vw,34px);font-weight:600}
+footer{border-top:1px solid var(--line);padding:28px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13.5px;color:var(--ink-soft)}
+footer .wrap{width:100%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .3s ease-out,transform .3s ease-out}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .scroll-cue{animation:none}
+}
+@media (max-width:640px){
+  .nav-links{gap:16px}
+  .nav-links a{font-size:13px}
+  section{padding:72px 0}
+  .pub{grid-template-columns:1fr;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" aria-label="Main navigation">
+  <div class="wrap">
+    <span class="nav-name">Sungjin Bae</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <img class="hero-avatar" src="assets/images/profile.jpg" alt="Sungjin Bae" width="128" height="128">
+  <h1 class="hero-name">Sungjin Bae</h1>
+  <p class="hero-tag">Rehabilitation robotics &amp; neurorehabilitation researcher</p>
+  <p class="hero-sub">Postdoctoral Researcher · Northwestern University &amp; Shirley Ryan AbilityLab · Chicago</p>
+  <div class="hero-links">
+    <a href="mailto:sungjin.bae@northwestern.edu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5-8-5V6.5l8 5 8-5v1.74z"/></svg>Email</a>
+    <a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zm-7 9.99V17l7 3.82L19 17v-4.01L12 17l-7-4.01z"/></svg>Scholar</a>
+    <a href="https://www.linkedin.com/in/sungjin-bae-778749102/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.28H5.67v8.06h2.67zM7 9.13a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 9.21v-4.42c0-2.37-1.27-3.47-2.96-3.47-1.36 0-1.97.75-2.31 1.28v-1.1h-2.67c.04.76 0 8.06 0 8.06h2.67v-4.5c0-.24.02-.48.09-.65.19-.48.63-.98 1.37-.98.96 0 1.35.74 1.35 1.82v4.31h2.46z"/></svg>LinkedIn</a>
+    <a href="https://github.com/sonjin1128" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>GitHub</a>
+  </div>
+  <span class="scroll-cue" aria-hidden="true">scroll ↓</span>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap reveal">
+    <p class="label">01 — About</p>
+    <h2>Bridging robotics and the recovering brain</h2>
+    <div class="prose">
+      <p>I am a postdoctoral researcher at <strong>Northwestern University</strong> and the <strong>Shirley Ryan AbilityLab</strong>, working with Dr. William Z. Rymer on spasticity in stroke survivors. My current research develops quantitative devices that make spasticity assessment faster and more precise than conventional clinical tests, and investigates pharmacological treatments with fewer side effects than existing options.</p>
+      <p>My work sits at the intersection of robotics, neuroscience, and rehabilitation medicine. During my Ph.D. at DGIST, I designed patented upper-limb rehabilitation exoskeletons that deliver multiple therapeutic movements with a single motor, and used fNIRS neuroimaging to ground robot-assisted therapy in measured brain activity. At KAIST, I built immersive VR- and rhythm-game-based hand rehabilitation systems that keep patients engaged throughout therapy.</p>
+      <p>Trained across Japan (Ritsumeikan, Osaka), South Korea (DGIST, KAIST), and the United States, my long-term goal is to lead an interdisciplinary research program that pushes the boundaries of rehabilitation science — and to mentor the next generation of researchers doing it.</p>
+    </div>
+    <div class="chips" role="list" aria-label="Research interests">
+      <span class="chip" role="listitem">Rehabilitation robotics</span>
+      <span class="chip" role="listitem">Spasticity assessment &amp; treatment</span>
+      <span class="chip" role="listitem">VR &amp; serious games</span>
+      <span class="chip" role="listitem">fNIRS neuroimaging</span>
+      <span class="chip" role="listitem">EMG / EEG signal processing</span>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <p class="label reveal">02 — Research</p>
+    <h2 class="reveal">Three threads, one goal: better recovery</h2>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="card-media" id="media-spasticity">Demo media coming soon</div>
+        <div class="card-body">
+          <span class="card-period">2023 — PRESENT · NU &amp; SRALAB</span>
+          <h3>Quantifying &amp; treating spasticity</h3>
+          <p>Devices using controlled tendon indentation and 3D force-vector analysis for faster, more precise spasticity assessment — paired with pilot studies of low-side-effect medications such as cyproheptadine.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="card-media" id="media-vr">Demo media coming soon</div>
+        <div class="card-body">
+          <span class="card-period">2021 — 2023 · KAIST</span>
+          <h3>Engagement-driven VR rehabilitation</h3>
+          <p>An immersive VR hand-rehab system built on a gesture-controlled rhythm game with vibrotactile feedback. fNIRS confirmed activation of motor, multisensory, and attention networks.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="card-media" id="media-exo">Demo media coming soon</div>
+        <div class="card-body">
+          <span class="card-period">2013 — 2021 · DGIST</span>
+          <h3>Upper-limb exoskeletons + fNIRS</h3>
+          <p>Patented hand and shoulder rehabilitation robots that deliver multiple therapeutic movements with a single motor — with fNIRS studies identifying optimal speed and timing for robot-assisted therapy.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <p class="label reveal">03 — Publications</p>
+    <h2 class="reveal">Selected publications &amp; patents</h2>
+    <div class="pub-filters reveal" role="tablist" aria-label="Publication type filter">
+      <button class="on" data-filter="all">All</button>
+      <button data-filter="journal">Journal</button>
+      <button data-filter="conference">Conference</button>
+      <button data-filter="patent">Patent</button>
+    </div>
+    <div id="pub-list">
+      <div class="pub reveal" data-type="journal">
+        <span class="pub-year">2025</span>
+        <div>
+          <p class="pub-title">Tracking spasticity dynamics in hemiparetic stroke survivors following cyproheptadine administration: a pilot study using controlled varying tendon indentation depths</p>
+          <p class="pub-meta"><strong>Bae S.J.</strong>, Chardon M.K., Roth E.J., Rymer W.Z., Suresh N.L. · <em>Frontiers in Stroke</em></p>
+          <div class="pub-links"><a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></div>
+        </div>
+      </div>
+      <div class="pub reveal" data-type="journal">
+        <span class="pub-year">2023</span>
+        <div>
+          <p class="pub-title">Development of immersive virtual reality-based hand rehabilitation system using a gesture-controlled rhythm game with vibrotactile feedback: an fNIRS pilot study</p>
+          <p class="pub-meta"><strong>Bae S.J.</strong>, Park H.S. · <em>IEEE Transactions on Neural Systems &amp; Rehabilitation Engineering</em></p>
+          <div class="pub-links"><a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></div>
+        </div>
+      </div>
+      <div class="pub reveal" data-type="journal">
+        <span class="pub-year">2020</span>
+        <div>
+          <p class="pub-title">There is no test-retest reliability of brain activation induced by robotic passive hand movement: a functional NIRS study</p>
+          <p class="pub-meta"><strong>Bae S.J.</strong>, Lee Y.H., Chang P.H. · <em>Brain and Behavior</em></p>
+          <div class="pub-links"><a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></div>
+        </div>
+      </div>
+      <div class="pub reveal" data-type="journal">
+        <span class="pub-year">2017</span>
+        <div>
+          <p class="pub-title">The optimal speed for cortical activation of passive wrist movements performed by a rehabilitation robot: a functional NIRS study</p>
+          <p class="pub-meta"><strong>Bae S.J.</strong>, Jang S.H., Seo J.P., Chang P.H. · <em>Frontiers in Human Neuroscience</em>, 11, 194</p>
+          <div class="pub-links"><a href="https://doi.org/10.3389/fnhum.2017.00194" target="_blank" rel="noopener">DOI</a><a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></div>
+        </div>
+      </div>
+      <div class="pub reveal" data-type="conference">
+        <span class="pub-year">2024</span>
+        <div>
+          <p class="pub-title">Characterizing 3D force vectors to improve the assessment of spasticity</p>
+          <p class="pub-meta">Kibria Z., <strong>Bae S.J.</strong>, Chandra S., Chardon M., Rymer W.Z., Suresh N. · <em>Int. Symposium on Medical Robotics (ISMR)</em>, IEEE</p>
+          <div class="pub-links"><a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></div>
+        </div>
+      </div>
+      <div class="pub reveal" data-type="conference">
+        <span class="pub-year">2017</span>
+        <div>
+          <p class="pub-title">Design of a clinically relevant upper-limb exoskeleton robot for stroke patients with spasticity</p>
+          <p class="pub-meta">Lee D.J., <strong>Bae S.J.</strong>, Jang S.H., Chang P.H. · <em>Int. Conf. on Rehabilitation Robotics (ICORR)</em>, 622–627, IEEE</p>
+          <div class="pub-links"><a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></div>
+        </div>
+      </div>
+      <div class="pub reveal" data-type="conference">
+        <span class="pub-year">2017</span>
+        <div>
+          <p class="pub-title">A pilot study on the optimal speeds for passive wrist movements by a rehabilitation robot of stroke patients: a functional NIRS study</p>
+          <p class="pub-meta"><strong>Bae S.J.</strong>, Jang S.H., Seo J.P., Chang P.H. · <em>Int. Conf. on Rehabilitation Robotics (ICORR)</em>, 7–12, IEEE</p>
+          <div class="pub-links"><a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></div>
+        </div>
+      </div>
+      <div class="pub reveal" data-type="patent">
+        <span class="pub-year">—</span>
+        <div>
+          <p class="pub-title">Shoulder Rehabilitation Robot</p>
+          <p class="pub-meta"><strong>Bae S.J.</strong>, Chang P.H. · Korea Patent No. 10-2084168</p>
+        </div>
+      </div>
+      <div class="pub reveal" data-type="patent">
+        <span class="pub-year">—</span>
+        <div>
+          <p class="pub-title">Hand Rehabilitation Robot</p>
+          <p class="pub-meta"><strong>Bae S.J.</strong>, Chang P.H., Erkin G. · Korea Patent No. 10-1866253</p>
+        </div>
+      </div>
+    </div>
+    <p class="muted reveal" style="margin-top:28px;font-size:14.5px">Full and up-to-date list on <a href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar →</a></p>
+  </div>
+</section>
+
+<section id="cv">
+  <div class="wrap">
+    <p class="label reveal">04 — CV</p>
+    <h2 class="reveal">Education &amp; positions</h2>
+    <div class="cv-grid">
+      <div class="reveal">
+        <h3 style="margin-bottom:16px">Education</h3>
+        <div class="cv-item"><p class="cv-when">2013 — 2020</p><p class="cv-what">Ph.D., Robotics Engineering</p><p class="cv-where">DGIST, South Korea</p></div>
+        <div class="cv-item"><p class="cv-when">2011 — 2013</p><p class="cv-what">M.S., Engineering Science &amp; Bioengineering</p><p class="cv-where">Osaka University, Japan</p></div>
+        <div class="cv-item"><p class="cv-when">2007 — 2011</p><p class="cv-what">B.S., Robotics Engineering</p><p class="cv-where">Ritsumeikan University, Japan</p></div>
+        <h3 style="margin:32px 0 16px">Honors</h3>
+        <div class="cv-item"><p class="cv-when">2022</p><p class="cv-what">Best Paper Award</p><p class="cv-where">KSME Bioengineering Division</p></div>
+        <div class="cv-item"><p class="cv-when">2010 — 2013</p><p class="cv-what">Monbukagakusho (MEXT) Scholarship</p><p class="cv-where">Japanese Ministry of Education (full tuition)</p></div>
+      </div>
+      <div class="reveal">
+        <h3 style="margin-bottom:16px">Positions</h3>
+        <div class="cv-item"><p class="cv-when">2023 — PRESENT</p><p class="cv-what">Postdoctoral Researcher</p><p class="cv-where">Northwestern University &amp; Shirley Ryan AbilityLab, USA</p></div>
+        <div class="cv-item"><p class="cv-when">2021 — 2023</p><p class="cv-what">Postdoctoral Researcher</p><p class="cv-where">Mechanical Engineering, KAIST, South Korea</p></div>
+        <div class="cv-item"><p class="cv-when">2020 — 2021</p><p class="cv-what">Postdoctoral Researcher</p><p class="cv-where">Robotics Engineering, DGIST, South Korea</p></div>
+        <div class="cv-item"><p class="cv-when">2015 — 2019</p><p class="cv-what">Research Assistant</p><p class="cv-where">Robotics Engineering, DGIST, South Korea</p></div>
+        <h3 style="margin:32px 0 16px">Fellowships</h3>
+        <div class="cv-item"><p class="cv-when">2022 — PRESENT</p><p class="cv-what">Postdoctoral Fellowship</p><p class="cv-where">Ministry of Health and Welfare, South Korea</p></div>
+        <div class="cv-item"><p class="cv-when">2022 — 2023</p><p class="cv-what">Postdoctoral Fellowship</p><p class="cv-where">Ministry of Science and ICT, South Korea</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <p class="label">05 — Contact</p>
+    <h2>Let's talk rehabilitation robotics</h2>
+    <p class="muted" style="max-width:600px">Open to research collaborations, speaking, and conversations about spasticity assessment, rehabilitation robotics, and neurorehabilitation.</p>
+    <p style="margin-top:24px"><a class="contact-mail" href="mailto:sungjin.bae@northwestern.edu">sungjin.bae@northwestern.edu</a></p>
+    <div class="chips" style="margin-top:20px">
+      <a class="chip" href="https://scholar.google.co.kr/citations?user=eL3KB-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a class="chip" href="https://www.linkedin.com/in/sungjin-bae-778749102/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="chip" href="https://github.com/sonjin1128" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Sungjin Bae</span>
+    <span>Chicago, IL · Built with a calm design system</span>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+const links = document.querySelectorAll('.nav-links a');
+const sections = [...document.querySelectorAll('main section')];
+
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), {passive:true});
+
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, {rootMargin:'-45% 0px -50% 0px'});
+sections.forEach(s => spy.observe(s));
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduce) {
+  const rev = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), (i % 6) * 60);
+        rev.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => rev.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+}
+
+document.querySelectorAll('.pub-filters button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pub-filters button').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.pub').forEach(p => {
+      p.style.display = (f === 'all' || p.dataset.type === f) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
